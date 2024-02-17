@@ -86,28 +86,30 @@ class GetDataTpsController extends CommandController
             $pas_3 = $c['100027'] ?? 0;
             $manipulasi = ($pas_1+$pas_2+$pas_3) - $suara_sah;
 
-            $perolehan->insert([
-                'kode_prov' => $kode[0],
-                'kode_kab_kota' => $kode[1],
-                'kode_kec' => $kode[2],
-                'kode_kel' => $kode[3],
-                'kode_tps' => $kode[4],
-                'lokasi' => $tps['path_name'],
-                'suara_total' => $a['suara_total'] ?? 0,
-                'suara_sah' => $a['suara_sah'] ?? 0,
-                'suara_tidak_sah' => $a['suara_tidak_sah'] ?? 0,
-                'pengguna_total' => $a['pengguna_dpt_j'] ?? 0,
-                'pemilih_dpt' => $a['pemilih_dpt_j'] ?? 0,
-                'pas_1' => $c['100025'] ?? 0,
-                'pas_2' => $c['100026'] ?? 0,
-                'pas_3' => $c['100027'] ?? 0,
-                'koreksi_pas_1' => 0,
-                'koreksi_pas_2' => 0,
-                'koreksi_pas_3' => 0,
-                'manipulasi' => $manipulasi,
-                'scan_c1_urls' => $images,
-                'waktu_tarik' => $time
-            ])->execute();
+            if($manipulasi > 0){
+                $perolehan->insert([
+                    'kode_prov' => $kode[0],
+                    'kode_kab_kota' => $kode[1],
+                    'kode_kec' => $kode[2],
+                    'kode_kel' => $kode[3],
+                    'kode_tps' => $kode[4],
+                    'lokasi' => $tps['path_name'],
+                    'suara_total' => $a['suara_total'] ?? 0,
+                    'suara_sah' => $a['suara_sah'] ?? 0,
+                    'suara_tidak_sah' => $a['suara_tidak_sah'] ?? 0,
+                    'pengguna_total' => $a['pengguna_dpt_j'] ?? 0,
+                    'pemilih_dpt' => $a['pemilih_dpt_j'] ?? 0,
+                    'pas_1' => $c['100025'] ?? 0,
+                    'pas_2' => $c['100026'] ?? 0,
+                    'pas_3' => $c['100027'] ?? 0,
+                    'koreksi_pas_1' => 0,
+                    'koreksi_pas_2' => 0,
+                    'koreksi_pas_3' => 0,
+                    'manipulasi' => $manipulasi,
+                    'scan_c1_urls' => $images,
+                    'waktu_tarik' => $time
+                ])->execute();
+            }
         }
     }
 }

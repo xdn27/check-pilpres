@@ -19,12 +19,13 @@ class MyDB {
 
 $scheduler = new Scheduler();
 
-$prov = (new MyDB())->getProv();
+// $prov = (new MyDB())->getProv();
 
-foreach ($prov as $key => $value) {
+// foreach ($prov as $key => $value) {
     
-    $scheduler->raw('./minicli kpu getdatatps p="'.$value['nama'].'"')->onlyOne();
-}
+//     $scheduler->raw('./minicli kpu getdatatps p="'.$value['nama'].'"')->onlyOne();
+// }
 
+$scheduler->raw('./minicli kpu getdatatps p="JAWA BARAT, JAWA TENGAH, JAWA TIMUR, DKI JAKARTA"')->onlyOne();
 
 $scheduler->run();
