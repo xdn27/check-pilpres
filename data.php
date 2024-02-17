@@ -4,12 +4,16 @@
 use Ozdemir\Datatables\Datatables;
 use Ozdemir\Datatables\DB\MySQL;
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
-$config = [ 'host'     => 'dbpro',
-            'port'     => '3306',
-            'username' => 'root',
-            'password' => 'root',
-            'database' => 'suara_pilpres_2024' ];
+
+$config = [ 'host'     => $_ENV['DB_HOST'],
+            'port'     => $_ENV['DB_PORT'],
+            'username' => $_ENV['DB_USER'],
+            'password' => $_ENV['DB_PASS'],
+            'database' => $_ENV['DB_NAME'] 
+        ];
 
 $dt = new Datatables( new MySQL($config) );
 

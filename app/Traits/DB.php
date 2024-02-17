@@ -4,13 +4,16 @@ declare(strict_types=1);
 
 namespace App\Traits;
 
+$dotenv = \Dotenv\Dotenv::createImmutable(dirname(dirname(__DIR__)));
+$dotenv->load();
+
 trait DB
 {
     public $db;
 
     public function dbinit() {
 
-        $connection = new \PDO('mysql:host=dbpro;dbname=suara_pilpres_2024;charset=utf8', 'root', 'root');
+        $connection = new \PDO('mysql:host='.$_ENV['DB_HOST'].';dbname='.$_ENV['DB_NAME'].';charset=utf8', $_ENV['DB_USER'], $_ENV['DB_PASS']);
 
         // create a new mysql query builder
         $this->db = new \ClanCats\Hydrahon\Builder('mysql', function($query, $queryString, $queryParameters) use($connection)

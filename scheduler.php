@@ -2,8 +2,29 @@
 
 use GO\Scheduler;
 
+
+class MyDB {
+
+    use \App\Traits\DB;
+
+    public function getProv() {
+        $this->dbinit();
+
+        $wilayah = $this->db->table('provinsi');
+        $wilayah_arr = $wilayah->select()->get();
+
+        return $wilayah_arr;
+    }
+}
+
 $scheduler = new Scheduler();
 
-$scheduler->raw('./minicli kpu getdatatps p="JAWA BARAT"')->onlyOne();
+$prov = (new MyDB())->getProv();
+
+foreach ($prov as $key => $value) {
+    
+    $scheduler->raw('./minicli kpu getdatatps p="'.$value['nama'].'"')->onlyOne();
+}
+
 
 $scheduler->run();
