@@ -15,7 +15,8 @@
     "minicli/command-help": "^1.0",
     "guzzlehttp/guzzle": "^7.0",
     "clancats/hydrahon": "^1.1",
-    "ozdemir/datatables": "^2.3"
+    "ozdemir/datatables": "^2.3",
+    "peppeocchi/php-cron-scheduler": "^4.0"
   },
   "require-dev": {
     "pestphp/pest": "^1.23",
