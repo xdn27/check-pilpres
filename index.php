@@ -18,7 +18,7 @@
       </header>
       <main>
         
-
+        <div class="table-responsive">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -45,6 +45,7 @@
             </tr>
         </tbody>
         </table>
+        </div>
         
       </main>
       <footer class="pt-5 my-5 text-muted border-top"> Peduli Bangsa </footer>
