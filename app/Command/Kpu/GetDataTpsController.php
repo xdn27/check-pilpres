@@ -84,9 +84,9 @@ class GetDataTpsController extends CommandController
             $pas_1 = $c['100025'] ?? 0;
             $pas_2 = $c['100026'] ?? 0;
             $pas_3 = $c['100027'] ?? 0;
-            $manipulasi = ($pas_1+$pas_2+$pas_3) - $suara_sah;
+            $manipulasi = $pas_1+$pas_2+$pas_3;
 
-            if($manipulasi > 0){
+            if($manipulasi > 200){
                 $perolehan->insert([
                     'kode_prov' => $kode[0],
                     'kode_kab_kota' => $kode[1],
